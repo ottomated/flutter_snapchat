@@ -1,0 +1,22 @@
+name: snapchat
+description: Interface with the Snapchat developer kit
+version: 0.0.1
+author: ottomated <otto@ottomated.net>
+homepage: https://github.com/ottomated/flutter_snapchat
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^0.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: net.ottomated.snapchat
+    pluginClass: SnapchatPlugin
