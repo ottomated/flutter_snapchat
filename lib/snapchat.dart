@@ -159,8 +159,7 @@ class SnapchatUser {
   @override
   String toString() {
     String result = "SnapchatUser[$displayName, id=$id";
-    if (hasBitmoji)
-      result += ", bitmoji=$bitmoji";
+    if (hasBitmoji) result += ", bitmoji=$bitmoji";
     return "$result]";
   }
 }

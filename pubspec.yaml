@@ -1,5 +1,5 @@
 name: snapchat
-description: Interface with the Snapchat developer kit
+description: Flutter plugin for authenticating your app with Snapchat, and sharing photos/videos from your app to Snapchat.
 version: 0.0.1
 author: ottomated <otto@ottomated.net>
 homepage: https://github.com/ottomated/flutter_snapchat
