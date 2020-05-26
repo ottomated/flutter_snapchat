@@ -77,15 +77,15 @@ Edit your `AndroidManifest.xml`:
 - If you want to use the Creative Kit, add this tag:
 
 ```xml
-<provider
-    android:name="android.support.v4.content.FileProvider"
-    android:authorities="${applicationId}.fileprovider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-</provider>
+<provider 
+          android:name="androidx.core.content.FileProvider" 
+          android:authorities="${applicationId}.fileprovider" 
+          android:exported="false" 
+          android:grantUriPermissions="true">
+      <meta-data 
+                 android:name="android.support.FILE_PROVIDER_PATHS" 
+                 android:resource="@xml/file_paths" />
+    </provider>
 ```
 
 Now, create a new file called `file_paths.xml` inside `res/xml` with the contents:
