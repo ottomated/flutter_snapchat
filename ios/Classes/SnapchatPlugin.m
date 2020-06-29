@@ -1,5 +1,5 @@
 #import "SnapchatPlugin.h"
-#import <snapchat/snapchat-Swift.h>
+#import <snapchat_androidx/snapchat_androidx-Swift.h>
 
 @implementation SnapchatPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
