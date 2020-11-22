@@ -16,7 +16,7 @@
 
 - [ ] [Bitmoji Kit](https://kit.snapchat.com/bitmoji-kit)
 
-- [ ] [Story Kit](https://kit.snapchat.com/bitmoji-kit)
+- [ ] [Story Kit](https://kit.snapchat.com/story-kit)
 
 - [ ] [Ad Kit](https://kit.snapchat.com/ad-kit)
 
