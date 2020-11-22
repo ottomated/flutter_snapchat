@@ -1,12 +1,37 @@
-# Snapchat
+# Flutter SnapKit
 
-Interface with the [Snapchat developer kit](https://kit.snapchat.com/). Currently supports the Login Kit, for OAuth authentication with Snapchat, and the Creative Kit, for sharing content from your app to Snapchat.
+ This plugin allows you to add [Snapchat's SnapKit](https://kit.snapchat.com/) to any Flutter project!
 
-iOS is currently a work in progress.
+### Features
+
+- [x] [Login Kit](https://kit.snapchat.com/login-kit)
+
+- [x] [Creative Kit](https://kit.snapchat.com/creative-kit)
+
+- [x] AndroidX Support
+
+- [ ] iOS Support (Coming very soon)
+
+- [ ] [Camera Kit](https://kit.snapchat.com/camera-kit)
+
+- [ ] [Bitmoji Kit](https://kit.snapchat.com/bitmoji-kit)
+
+- [ ] [Story Kit](https://kit.snapchat.com/bitmoji-kit)
+
+- [ ] [Ad Kit](https://kit.snapchat.com/ad-kit)
+
+
 
 ## Installation
 
-- First, add `snapchat` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+- First, add `snapkit` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+```yaml
+dependencies:
+  snapkit:
+  ...
+```
+
 - Register an app on the [Snapchat developer portal](https://kit.snapchat.com/portal), and get your client ID.
 - Also, create a redirect url that looks something like `yourapp://snapchat/oauth2`.
 
@@ -26,69 +51,92 @@ allprojects {
 }
 ```
 
-Edit your **app-level** `build.gradle` by adding this to the *dependencies* block:
+Edit the `build.gradle` in `android` by adding this to the *dependencies* block:
 
 ```groovy
-implementation([
-    'com.snapchat.kit.sdk:creative:1.1.4',
-    'com.snapchat.kit.sdk:login:1.1.4',
-    'com.snapchat.kit.sdk:core:1.1.4'
-])
+dependencies {
+    ...
+    implementation([
+        'com.snapchat.kit.sdk:creative:1.6.5',
+        'com.snapchat.kit.sdk:login:1.6.5',
+        'com.snapchat.kit.sdk:core:1.6.5'
+    ])
+}
 ```
 
-Edit your `AndroidManifest.xml`:
+Edit the `AndroidManifest.xml` in `android/src/main`:
 
-- Inside your application tag, add these three fields (inserting your client ID and redirect URL):
-
-```xml
-<meta-data
-    android:name="com.snapchat.kit.sdk.clientId"
-    android:value="YOUR_CLIENT_ID" />
-<meta-data
-    android:name="com.snapchat.kit.sdk.redirectUrl"
-    android:value="yourapp://snapchat/oauth2" />
-<meta-data
-    android:name="com.snapchat.kit.sdk.scopes"
-    android:resource="@array/snap_connect_scopes" />
-```
-
-- Also add this activity tag. You'll need to deconstruct your redirect url into the parts `scheme`://`host` `path`:
+- Inside your application tag, add these three `meta-data` fields (make sure to set your own `ClientID` & `RedirectURL`):
 
 ```xml
-<activity
-    android:name="com.snapchat.kit.sdk.SnapKitActivity"
-    android:launchMode="singleTask">
+<application ... >
+    ...
 
-    <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-
-        <data
-            android:scheme="yourapp"
-            android:host="snapchat"
-            android:path="/oauth2" />
-    </intent-filter>
-
-</activity>
-```
-
-- If you want to use the Creative Kit, add this tag:
-
-```xml
-<provider
-    android:name="android.support.v4.content.FileProvider"
-    android:authorities="${applicationId}.fileprovider"
-    android:exported="false"
-    android:grantUriPermissions="true">
     <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-</provider>
+        android:name="com.snapchat.kit.sdk.clientId"
+        android:value="YOUR_CLIENT_ID" />
+
+    <meta-data
+        android:name="com.snapchat.kit.sdk.redirectUrl"
+        android:value="yourapp://snapchat/oauth2" />
+
+    <meta-data
+        android:name="com.snapchat.kit.sdk.scopes"
+        android:resource="@array/snap_connect_scopes" />
+
+    ...
+</application>
 ```
 
-Now, create a new file called `file_paths.xml` inside `res/xml` with the contents:
+- Also add this activity tag to the same file. You'll need to deconstruct your redirect url into the parts `scheme`://`host` `/path`:
+
+```xml
+<application ... >
+    ...
+
+    <activity
+        android:name="com.snapchat.kit.sdk.SnapKitActivity"
+        android:launchMode="singleTask">
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data
+                android:scheme="yourapp"
+                android:host="snapchat"
+                android:path="/oauth2" />
+        </intent-filter>
+
+    </activity>
+
+    ...
+</application>
+```
+
+- If you want to use the Creative Kit, add this tag to the same `AndroidManifest.xml`:
+
+```xml
+<application ... >
+    ...
+
+    <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+    </provider>
+
+    ...
+</application>
+```
+
+Now, create a new file called `file_paths.xml` inside `android/app/src/main/res/xml` with these contents:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -97,7 +145,7 @@ Now, create a new file called `file_paths.xml` inside `res/xml` with the content
 </paths>
 ```
 
-Finally, create a new file called `arrays.xml` inside `res/values` with the contents:
+Finally, create a new file called `arrays.xml` inside `android/app/src/main/res/values` with the contents:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -112,7 +160,7 @@ Finally, create a new file called `arrays.xml` inside `res/values` with the cont
 
 ### iOS
 
-Coming soon.
+Coming very soon.
 
 ## Usage
 
