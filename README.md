@@ -28,7 +28,9 @@
 
 ```yaml
 dependencies:
-  snapkit:
+  snapchat:
+    git:
+      url: git://github.com/TimmyRB/Flutter-SnapKit.git
   ...
 ```
 
