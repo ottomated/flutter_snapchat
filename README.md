@@ -34,7 +34,7 @@ dependencies:
   ...
 ```
 
-- Register an app on the [Snapchat developer portal](https://kit.snapchat.com/portal), and get your client ID.
+- Register an app on the [SnapKit portal](https://kit.snapchat.com/portal), and get your client ID.
 - Also, create a redirect url that looks something like `yourapp://snapchat/oauth2`.
 - Download/Clone the [repo](http://github.com/TimmyRB/Flutter-SnapKit) and use the included example project as a base or follow the instructions below
 
