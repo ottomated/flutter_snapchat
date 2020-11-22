@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SnapchatPlugin snapchat;
+  SnapKitPlugin snapchat;
   SnapchatUser user;
 
   String stickerPath;
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    snapchat = SnapchatPlugin();
+    snapchat = SnapKitPlugin();
     initSnapchat();
   }
 

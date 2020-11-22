@@ -118,7 +118,7 @@ Coming soon.
 
 ```dart
 // Initialize the plugin before using it
-var snapchat = SnapchatPlugin();
+var snapchat = SnapKitPlugin();
 await snapchat.init();
 
 // Make sure that the user has Snapchat installed

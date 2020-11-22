@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Allows interaction with Snapchat
-class SnapchatPlugin {
+class SnapKitPlugin {
   /// Key used to store loggedInUser in shared preferences.
   static const _prefKey = '__snapchat_plugin_user';
 
-  SnapchatPlugin();
+  SnapKitPlugin();
 
   Future init() async {
     var prefs = await SharedPreferences.getInstance();

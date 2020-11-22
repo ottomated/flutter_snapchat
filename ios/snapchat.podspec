@@ -2,15 +2,15 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'snapchat'
+  s.name             = 'snapkit'
   s.version          = '0.0.1'
-  s.summary          = 'Interface with the Snapchat developer kit'
+  s.summary          = 'Interface with Snapchat\'s SnapKit'
   s.description      = <<-DESC
-Interface with the Snapchat developer kit
+Interface with Snapchat\'s SnapKit
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://jacobbrasil.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Jacob Brasil' => 'https://jacobbrasil.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'

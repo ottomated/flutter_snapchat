@@ -1,4 +1,4 @@
-group 'net.ottomated.snapchat'
+group 'com.jacobbrasil.snapkit'
 version '1.0-SNAPSHOT'
 
 buildscript {

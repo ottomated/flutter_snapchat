@@ -1,4 +1,4 @@
-package net.ottomated.snapchat;
+package com.jacobbrasil.snapkit;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -34,15 +34,15 @@ import com.snapchat.kit.sdk.login.networking.FetchUserDataCallback;
 import com.snapchat.kit.sdk.util.SnapUtils;
 
 /**
- * SnapchatPlugin
+ * SnapKitPlugin
  */
-public class SnapchatPlugin implements MethodCallHandler, LoginStateController.OnLoginStateChangedListener {
+public class SnapKitPlugin implements MethodCallHandler, LoginStateController.OnLoginStateChangedListener {
     private Activity _activity;
     private MethodChannel.Result _result;
     private SnapCreativeKitApi creativeApi;
     private SnapMediaFactory mediaFactory;
 
-    private SnapchatPlugin(Activity activity) {
+    private SnapKitPlugin(Activity activity) {
         this._activity = activity;
     }
 
@@ -51,7 +51,7 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
      */
     public static void registerWith(Registrar registrar) {
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "snapchat");
-        channel.setMethodCallHandler(new SnapchatPlugin(registrar.activity()));
+        channel.setMethodCallHandler(new SnapKitPlugin(registrar.activity()));
     }
 
     @Override

@@ -1,4 +1,4 @@
-name: snapchat_example
+name: snapkit_example
 description: Demonstrates how to use the snapchat plugin.
 publish_to: 'none'
 
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  snapchat:
+  snapkit:
     path: ../
 
 flutter:
