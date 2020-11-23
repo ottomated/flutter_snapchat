@@ -62,6 +62,7 @@ dependencies {
     implementation([
         'com.snapchat.kit.sdk:creative:1.6.7',
         'com.snapchat.kit.sdk:login:1.6.7',
+        'com.snapchat.kit.sdk:bitmoji:1.6.7',
         'com.snapchat.kit.sdk:core:1.6.7'
     ])
 }
