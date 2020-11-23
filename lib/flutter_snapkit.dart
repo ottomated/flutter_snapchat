@@ -36,7 +36,7 @@ class SnapKitPlugin {
   }
 
   /// Channel used to communicate to native code.
-  static const MethodChannel _channel = const MethodChannel('snapchat');
+  static const MethodChannel _channel = const MethodChannel('flutter_snapkit');
 
   /// Log a user in by opening the Snapchat app's OAuth screen.
   Future<SnapchatUser> login() async {
@@ -90,6 +90,11 @@ class SnapKitPlugin {
   /// Returns a boolean that indicates whether Snapchat is installed
   Future<bool> isSnapchatInstalled() async {
     return await _channel.invokeMethod("installed");
+  }
+
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
+    return version;
   }
 }
 

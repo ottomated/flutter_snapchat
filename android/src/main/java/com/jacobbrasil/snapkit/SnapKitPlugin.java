@@ -50,7 +50,7 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "snapchat");
+        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_snapkit");
         channel.setMethodCallHandler(new SnapKitPlugin(registrar.activity()));
     }
 
@@ -68,7 +68,7 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
                 break;
             case "logout":
                 SnapLogin.getLoginStateController(_activity).removeOnLoginStateChangedListener(this);
-                SnapLogin.getAuthTokenManager(_activity).revokeToken();
+                SnapLogin.getAuthTokenManager(_activity).clearToken();
                 this._result = result;
                 break;
             case "send":
@@ -157,7 +157,7 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
     }
 
     private void fetchUserData() {
-        String query = "{me{bitmoji{avatar},displayName,externalId}}";
+        String query = "{me{bitmoji{selfie},displayName,externalId}}";
         SnapLogin.fetchUserData(_activity, query, null, new FetchUserDataCallback() {
             @Override
             public void onSuccess(UserDataResponse userDataResponse) {
@@ -176,8 +176,8 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
                 data.put("displayName", meData.getDisplayName());
 
                 if (meData.getBitmojiData() != null) {
-                    if (!TextUtils.isEmpty(meData.getBitmojiData().getAvatar())) {
-                        data.put("bitmoji", meData.getBitmojiData().getAvatar());
+                    if (!TextUtils.isEmpty(meData.getBitmojiData().getSelfie())) {
+                        data.put("bitmoji", meData.getBitmojiData().getSelfie());
                     }
                 }
                 _result.success(data);

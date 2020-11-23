@@ -36,11 +36,11 @@ dependencies:
 
 - Register an app on the [SnapKit portal](https://kit.snapchat.com/portal), and get your client ID.
 - Also, create a redirect url that looks something like `yourapp://snapchat/oauth2`.
-- Download/Clone the [repo](http://github.com/TimmyRB/Flutter-SnapKit) and use the included example project as a base or follow the instructions below
+- Download/Clone the [repo](http://github.com/TimmyRB/flutter_snapkit) and use the included example project as a base or follow the instructions below
 
 ### Android
 
-Edit your **project-level** `build.gradle` by adding the snap-kit repository to this block:
+Edit the `build.gradle` in `android` by adding the snap-kit repository to this block:
 
 ```groovy
 allprojects {
@@ -54,15 +54,15 @@ allprojects {
 }
 ```
 
-Edit the `build.gradle` in `android` by adding this to the *dependencies* block:
+Edit the `build.gradle` in `android/app` by adding this to the *dependencies* block:
 
 ```groovy
 dependencies {
     ...
     implementation([
-        'com.snapchat.kit.sdk:creative:1.6.5',
-        'com.snapchat.kit.sdk:login:1.6.5',
-        'com.snapchat.kit.sdk:core:1.6.5'
+        'com.snapchat.kit.sdk:creative:1.6.7',
+        'com.snapchat.kit.sdk:login:1.6.7',
+        'com.snapchat.kit.sdk:core:1.6.7'
     ])
 }
 ```
