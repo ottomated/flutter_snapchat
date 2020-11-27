@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Flutter Action
+name: Flutter Tests
 
 # Controls when the action will run. 
 on:
@@ -31,4 +31,4 @@ jobs:
           flutter-version: '1.22.4'
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk
+      - run: cd example && flutter build apk
