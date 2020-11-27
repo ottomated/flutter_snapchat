@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:snapkit/snapkit.dart';
+import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       user = res;
     });
+    log(res.toString());
   }
 
   @override
@@ -62,7 +64,8 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   Center(
-                    child: Text('User: ${user.displayName}\n${user.id}'),
+                    child: Text(
+                        'User: ${user.displayName}\n${user.id}\n${user.bitmoji}'),
                   ),
                 ],
               ),
@@ -75,7 +78,6 @@ class _MyAppState extends State<MyApp> {
               y: 0.5,
               rotation: 30,
             ),
-            attachment: "https://google.com",
           );
         }),
       ),

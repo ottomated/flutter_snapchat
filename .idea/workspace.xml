@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9c83c18-2f5c-4d86-9f5d-369c8d2262b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.project" beforeDir="false" afterPath="$PROJECT_DIR$/android/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/jacobbrasil/snapkit/SnapKitPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/jacobbrasil/snapkit/SnapKitPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snapkit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/snapkit.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,8 @@
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/tools/dart-sdk" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -49,5 +51,21 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="178" key="#Notifications/0.0.2560.1040/2560.-752.1080.1880/638.-1080.1920.1040@0.0.2560.1040" timestamp="1606100343767" />
+    <state x="1169" y="409" width="444" height="222" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606457273857">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1169" y="409" width="444" height="222" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1040/2560.-752.1080.1880/638.-1080.1920.1040@0.0.2560.1040" timestamp="1606457273857" />
+    <state x="1454" y="298" key="FileChooserDialogImpl" timestamp="1606456770424">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1454" y="298" key="FileChooserDialogImpl/0.0.2560.1040/2560.-752.1080.1880/638.-1080.1920.1040@0.0.2560.1040" timestamp="1606456770424" />
+    <state x="1175" y="186" key="SettingsEditor" timestamp="1606456775452">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1175" y="186" key="SettingsEditor/0.0.2560.1040/2560.-752.1080.1880/638.-1080.1920.1040@0.0.2560.1040" timestamp="1606456775452" />
+    <state x="1002" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1606456573073">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1002" y="344" key="com.intellij.ide.util.TipDialog/0.0.2560.1040/2560.-752.1080.1880/638.-1080.1920.1040@0.0.2560.1040" timestamp="1606456573073" />
   </component>
 </project>

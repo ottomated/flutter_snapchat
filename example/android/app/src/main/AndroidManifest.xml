@@ -13,9 +13,6 @@
 		<!-- Make sure to change this to your own RedirectURL -->
 		<meta-data android:name="com.snapchat.kit.sdk.redirectUrl" android:value="snapkit://redirect/url" />
 		<meta-data android:name="com.snapchat.kit.sdk.scopes" android:resource="@array/snap_connect_scopes" />
-		<queries>
-			<package android:name="com.snapchat.android" />
-		</queries>
 		<activity android:name="com.snapchat.kit.sdk.SnapKitActivity" android:launchMode="singleTask">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
@@ -55,4 +52,7 @@
 		-->
 		<meta-data android:name="flutterEmbedding" android:value="2" />
 	</application>
+	<queries>
+		<package android:name="com.snapchat.android" />
+	</queries>
 </manifest>
