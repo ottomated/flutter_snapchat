@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_snapkit/flutter_snapkit.dart';
+import 'package:snapkit/snapkit.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_snapkit');
@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterSnapkit.platformVersion, '42');
+    expect(await SnapKitPlugin.platformVersion, '42');
   });
 }

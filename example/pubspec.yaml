@@ -15,7 +15,7 @@ dependencies:
   path: ^1.6.2
   path_provider: ^1.1.0
 
-  flutter_snapkit:
+  snapkit:
     # When depending on this package from a real application you should use:
     #   flutter_snapkit: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

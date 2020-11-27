@@ -11,6 +11,9 @@ class SnapKitPlugin {
 
   SnapKitPlugin();
 
+  /// Must be called before doing anything else with this plugin
+  /// checks for an already signed in [SnapchatUser] and allows
+  /// you to retrieve it with [loggedInUser]
   Future init() async {
     var prefs = await SharedPreferences.getInstance();
     if (prefs.getKeys().contains(_prefKey)) {
@@ -88,7 +91,7 @@ class SnapKitPlugin {
   }
 
   /// Returns a boolean that indicates whether Snapchat is installed
-  Future<bool> isSnapchatInstalled() async {
+  Future<bool> get snapchatInstalled async {
     return await _channel.invokeMethod("installed");
   }
 
@@ -101,32 +104,35 @@ class SnapKitPlugin {
 /// A Snapchat "sticker", which is an image that the end-user can place over
 /// their photo.
 class SnapchatSticker {
-  /// Width of the sticker in pixels
+  /// Width of the sticker in pixels (Optional)
   double width;
 
-  /// Height of the sticker in pixels
+  /// Height of the sticker in pixels (Optional)
   double height;
 
-  /// X Position of the sticker from 0.0 to 1.0
+  /// X Position of the sticker from 0.0 to 1.0 (Defaults to 0.5)
   double x;
 
-  /// Y Position of the sticker from 0.0 to 1.0
+  /// Y Position of the sticker from 0.0 to 1.0 (Defaults to 0.5)
   double y;
 
-  /// Rotation of the sticker, in degrees clockwise
+  /// Rotation of the sticker, in degrees clockwise (Optional)
   double rotation;
 
-  /// Path to the file containing the sticker image
-  String file;
+  /// Path to sticker image relative to the assets folder
+  /// eg:
+  /// If your image is in assets/stickers/image.png
+  /// set this to "stickers/image.png"
+  String path;
 
   SnapchatSticker(
-    this.file, {
+    this.path, {
     this.width,
     this.height,
-    this.x,
-    this.y,
-    this.rotation,
-  }) : assert(file != null);
+    this.x = 0.5,
+    this.y = 0.5,
+    this.rotation = 0.0,
+  }) : assert(path != null);
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -135,7 +141,7 @@ class SnapchatSticker {
       'x': x,
       'y': y,
       'rotation': rotation,
-      'path': file,
+      'path': path
     };
   }
 }

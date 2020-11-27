@@ -1,6 +1,6 @@
-name: flutter_snapkit
+name: snapkit
 description: A Flutter Plugin for integrating with Snapchat's SnapKit on iOS & Android
-version: 0.0.1
+version: 0.0.2
 authors: 
   - ottomated <otto@ottomated.net>
   - jacobbrasil <https://jacobbrasil.com>
