@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'snapkit'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Interface with Snapchat\'s SnapKit'
   s.description      = <<-DESC
 Interface with Snapchat\'s SnapKit
