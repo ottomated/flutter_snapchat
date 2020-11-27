@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Flutter Test:
+  Flutter_Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
       - run: flutter pub get
       - run: flutter test
         
-  Build Android:
+  Build_Android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
       - run: flutter pub get
       - run: cd example && flutter build appbundle
   
-  Build iOS:
+  Build_iOS:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
