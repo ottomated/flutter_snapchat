@@ -52,4 +52,4 @@ jobs:
       with:
         flutter-version: '1.22.4'
     - run: flutter pub get
-    - run: flutter build ios --release --no-codesign
+    - run: cd example && flutter build ios --release --no-codesign
