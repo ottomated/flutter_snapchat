@@ -7,44 +7,27 @@
 	FlutterApplication and put your custom class here.
 	-->
 	<application android:name="io.flutter.app.FlutterApplication" android:label="snapkit_example" android:icon="@mipmap/ic_launcher">
-
 		<!-- SnapKit -->
 		<!-- Make sure to change this to your own ClientID -->
 		<meta-data android:name="com.snapchat.kit.sdk.clientId" android:value="f01d8f3b-807f-4da3-8788-ca4d4cf5cd75" />
-    <!-- Make sure to change this to your own RedirectURL -->
+		<!-- Make sure to change this to your own RedirectURL -->
 		<meta-data android:name="com.snapchat.kit.sdk.redirectUrl" android:value="snapkit://redirect/url" />
 		<meta-data android:name="com.snapchat.kit.sdk.scopes" android:resource="@array/snap_connect_scopes" />
-
-    <activity
-        android:name="com.snapchat.kit.sdk.SnapKitActivity"
-        android:launchMode="singleTask">
-
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-
-            <data
-                android:scheme="snapkit"
-                android:host="redirect"
-                android:path="/url" />
-        </intent-filter>
-
-    </activity>
-
-    <provider
-        android:name="androidx.core.content.FileProvider"
-        android:authorities="${applicationId}.fileprovider"
-        android:exported="false"
-        android:grantUriPermissions="true">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths" />
-    </provider>
-
+		<queries>
+			<package android:name="com.snapchat.android" />
+		</queries>
+		<activity android:name="com.snapchat.kit.sdk.SnapKitActivity" android:launchMode="singleTask">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="snapkit" android:host="redirect" android:path="/url" />
+			</intent-filter>
+		</activity>
+		<provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+		</provider>
 		<!-- SnapKit -->
-
 		<activity android:name=".MainActivity" android:launchMode="singleTop" android:theme="@style/LaunchTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize">
 			<!--
 			Specifies an Android theme to apply to this Activity as soon as

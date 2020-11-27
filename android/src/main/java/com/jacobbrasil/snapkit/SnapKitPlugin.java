@@ -160,7 +160,7 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
         String query = "{me{bitmoji{selfie},displayName,externalId}}";
         SnapLogin.fetchUserData(_activity, query, null, new FetchUserDataCallback() {
             @Override
-            public void onSuccess(UserDataResponse userDataResponse) {
+            public void onSuccess(@Nullable UserDataResponse userDataResponse) {
                 if (userDataResponse == null || userDataResponse.getData() == null) {
                     return;
                 }
@@ -175,9 +175,10 @@ public class SnapKitPlugin implements MethodCallHandler, LoginStateController.On
 
                 data.put("displayName", meData.getDisplayName());
 
-                if (meData.getBitmojiData() != null) {
-                    if (!TextUtils.isEmpty(meData.getBitmojiData().getSelfie())) {
-                        data.put("bitmoji", meData.getBitmojiData().getSelfie());
+                UserBitmojiData bitmojiData = meData.getBitmojiData();
+                if (bitmojiData != null) {
+                    if (!TextUtils.isEmpty(bitmojiData.getSelfie())) {
+                        data.put("bitmoji", bitmojiData.getSelfie());
                     }
                 }
                 _result.success(data);
