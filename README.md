@@ -1,6 +1,9 @@
 # Flutter SnapKit
 
- This plugin allows you to add [Snapchat's SnapKit](https://kit.snapchat.com/) to any Flutter project!
+![Flutter Builds](https://github.com/TimmyRB/flutter_snapkit/workflows/Flutter%20Builds/badge.svg)
+![Flutter Tests](https://github.com/TimmyRB/flutter_snapkit/workflows/Flutter%20Tests/badge.svg)
+
+This plugin allows you to add [Snapchat's SnapKit](https://kit.snapchat.com/) to any Flutter project!
 
 ### Features
 
