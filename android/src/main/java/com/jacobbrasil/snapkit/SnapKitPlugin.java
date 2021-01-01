@@ -1,17 +1,7 @@
-package net.ottomated.snapchat;
+package com.jacobbrasil.snapkit;
 
 import android.app.Activity;
 import android.text.TextUtils;
-
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.snapchat.kit.sdk.SnapCreative;
 import com.snapchat.kit.sdk.SnapLogin;
@@ -29,20 +19,31 @@ import com.snapchat.kit.sdk.creative.models.SnapLiveCameraContent;
 import com.snapchat.kit.sdk.creative.models.SnapPhotoContent;
 import com.snapchat.kit.sdk.creative.models.SnapVideoContent;
 import com.snapchat.kit.sdk.login.models.MeData;
+import com.snapchat.kit.sdk.login.models.UserBitmojiData;
 import com.snapchat.kit.sdk.login.models.UserDataResponse;
 import com.snapchat.kit.sdk.login.networking.FetchUserDataCallback;
 import com.snapchat.kit.sdk.util.SnapUtils;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.PluginRegistry.Registrar;
+
 /**
- * SnapchatPlugin
+ * SnapKitPlugin
  */
-public class SnapchatPlugin implements MethodCallHandler, LoginStateController.OnLoginStateChangedListener {
+public class SnapKitPlugin implements MethodCallHandler, LoginStateController.OnLoginStateChangedListener {
     private Activity _activity;
     private MethodChannel.Result _result;
     private SnapCreativeKitApi creativeApi;
     private SnapMediaFactory mediaFactory;
 
-    private SnapchatPlugin(Activity activity) {
+    private SnapKitPlugin(Activity activity) {
         this._activity = activity;
     }
 
@@ -50,8 +51,8 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "snapchat");
-        channel.setMethodCallHandler(new SnapchatPlugin(registrar.activity()));
+        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_snapkit");
+        channel.setMethodCallHandler(new SnapKitPlugin(registrar.activity()));
     }
 
     @Override
@@ -68,7 +69,7 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
                 break;
             case "logout":
                 SnapLogin.getLoginStateController(_activity).removeOnLoginStateChangedListener(this);
-                SnapLogin.getAuthTokenManager(_activity).revokeToken();
+                SnapLogin.getAuthTokenManager(_activity).clearToken();
                 this._result = result;
                 break;
             case "send":
@@ -104,9 +105,9 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
                         return;
                     }
                     if (stickerMap.get("width") != null)
-                        sticker.setWidth(((Double) stickerMap.get("width")).floatValue());
+                        sticker.setWidthDp(((Double) stickerMap.get("width")).floatValue());
                     if (stickerMap.get("height") != null)
-                        sticker.setHeight(((Double) stickerMap.get("height")).floatValue());
+                        sticker.setHeightDp(((Double) stickerMap.get("height")).floatValue());
                     if (stickerMap.get("x") != null)
                         sticker.setPosX(((Double) stickerMap.get("x")).floatValue());
                     if (stickerMap.get("y") != null)
@@ -157,7 +158,7 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
     }
 
     private void fetchUserData() {
-        String query = "{me{bitmoji{avatar},displayName,externalId}}";
+        String query = "{me{bitmoji{selfie},displayName,externalId}}";
         SnapLogin.fetchUserData(_activity, query, null, new FetchUserDataCallback() {
             @Override
             public void onSuccess(UserDataResponse userDataResponse) {
@@ -175,10 +176,9 @@ public class SnapchatPlugin implements MethodCallHandler, LoginStateController.O
 
                 data.put("displayName", meData.getDisplayName());
 
-                if (meData.getBitmojiData() != null) {
-                    if (!TextUtils.isEmpty(meData.getBitmojiData().getAvatar())) {
-                        data.put("bitmoji", meData.getBitmojiData().getAvatar());
-                    }
+                UserBitmojiData bitmojiData = meData.getBitmojiData();
+                if (bitmojiData != null) {
+                    data.put("bitmoji", bitmojiData.getSelfie());
                 }
                 _result.success(data);
 

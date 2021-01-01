@@ -5,12 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Allows interaction with Snapchat
-class SnapchatPlugin {
+class SnapKitPlugin {
   /// Key used to store loggedInUser in shared preferences.
   static const _prefKey = '__snapchat_plugin_user';
 
-  SnapchatPlugin();
+  SnapKitPlugin();
 
+  /// Must be called before doing anything else with this plugin
+  /// checks for an already signed in [SnapchatUser] and allows
+  /// you to retrieve it with [loggedInUser]
   Future init() async {
     var prefs = await SharedPreferences.getInstance();
     if (prefs.getKeys().contains(_prefKey)) {
@@ -36,7 +39,7 @@ class SnapchatPlugin {
   }
 
   /// Channel used to communicate to native code.
-  static const MethodChannel _channel = const MethodChannel('snapchat');
+  static const MethodChannel _channel = const MethodChannel('flutter_snapkit');
 
   /// Log a user in by opening the Snapchat app's OAuth screen.
   Future<SnapchatUser> login() async {
@@ -88,40 +91,48 @@ class SnapchatPlugin {
   }
 
   /// Returns a boolean that indicates whether Snapchat is installed
-  Future<bool> isSnapchatInstalled() async {
+  Future<bool> get snapchatInstalled async {
     return await _channel.invokeMethod("installed");
+  }
+
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
+    return version;
   }
 }
 
 /// A Snapchat "sticker", which is an image that the end-user can place over
 /// their photo.
 class SnapchatSticker {
-  /// Width of the sticker in pixels
+  /// Width of the sticker in pixels (Optional)
   double width;
 
-  /// Height of the sticker in pixels
+  /// Height of the sticker in pixels (Optional)
   double height;
 
-  /// X Position of the sticker from 0.0 to 1.0
+  /// X Position of the sticker from 0.0 to 1.0 (Defaults to 0.5)
   double x;
 
-  /// Y Position of the sticker from 0.0 to 1.0
+  /// Y Position of the sticker from 0.0 to 1.0 (Defaults to 0.5)
   double y;
 
-  /// Rotation of the sticker, in degrees clockwise
+  /// Rotation of the sticker, in degrees clockwise (Optional)
   double rotation;
 
-  /// Path to the file containing the sticker image
-  String file;
+  /// Path to sticker image relative to the assets folder
+  /// eg:
+  /// If your image is in assets/stickers/image.png
+  /// set this to "stickers/image.png"
+  String path;
 
   SnapchatSticker(
-    this.file, {
+    this.path, {
     this.width,
     this.height,
-    this.x,
-    this.y,
-    this.rotation,
-  }) : assert(file != null);
+    this.x = 0.5,
+    this.y = 0.5,
+    this.rotation = 0.0,
+  }) : assert(path != null);
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -130,7 +141,7 @@ class SnapchatSticker {
       'x': x,
       'y': y,
       'rotation': rotation,
-      'path': file,
+      'path': path
     };
   }
 }

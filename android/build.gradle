@@ -1,4 +1,4 @@
-group 'net.ottomated.snapchat'
+group 'com.jacobbrasil.snapkit'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.4'
     }
 }
 
@@ -25,11 +25,11 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 19
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -39,8 +39,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation([
-            'com.snapchat.kit.sdk:creative:1.1.4',
-            'com.snapchat.kit.sdk:login:1.1.4',
-            'com.snapchat.kit.sdk:core:1.1.4'
+            'com.snapchat.kit.sdk:creative:1.6.7',
+            'com.snapchat.kit.sdk:login:1.6.7',
+            'com.snapchat.kit.sdk:core:1.6.7',
+            'com.snapchat.kit.sdk:bitmoji:1.6.7'
     ])
 }

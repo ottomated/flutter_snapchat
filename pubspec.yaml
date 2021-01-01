@@ -1,11 +1,14 @@
-name: snapchat
-description: Flutter plugin for authenticating your app with Snapchat, and sharing photos/videos from your app to Snapchat.
-version: 0.0.1
-author: ottomated <otto@ottomated.net>
-homepage: https://github.com/ottomated/flutter_snapchat
+name: snapkit
+description: A Flutter Plugin for integrating with Snapchat's SnapKit on iOS & Android
+version: 0.0.2
+homepage: https://github.com/TimmyRB/Flutter-SnapKit
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.12.0 <2.0.0"
+
+module:
+  androidX: true
 
 dependencies:
   flutter:
@@ -18,5 +21,9 @@ dev_dependencies:
 
 flutter:
   plugin:
-    androidPackage: net.ottomated.snapchat
-    pluginClass: SnapchatPlugin
+    platforms:
+      android:
+        package: com.jacobbrasil.snapkit
+        pluginClass: SnapKitPlugin
+      ios:
+        pluginClass: SnapKitPlugin

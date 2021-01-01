@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
-import 'package:snapchat/snapchat.dart';
+import 'package:snapkit/snapkit.dart';
+import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SnapchatPlugin snapchat;
+  SnapKitPlugin snapchat;
   SnapchatUser user;
 
   String stickerPath;
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    snapchat = SnapchatPlugin();
+    snapchat = SnapKitPlugin();
     initSnapchat();
   }
 
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       user = res;
     });
+    log(res.toString());
   }
 
   @override
@@ -62,7 +64,8 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   Center(
-                    child: Text('User: ${user.displayName}\n${user.id}'),
+                    child: Text(
+                        'User: ${user.displayName}\n${user.id}\n${user.bitmoji}'),
                   ),
                 ],
               ),
@@ -75,7 +78,6 @@ class _MyAppState extends State<MyApp> {
               y: 0.5,
               rotation: 30,
             ),
-            attachment: "https://google.com",
           );
         }),
       ),
